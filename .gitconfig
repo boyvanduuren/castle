@@ -1,0 +1,7 @@
+[user]
+	email = bcvanduuren@gmail.com
+	name = bcd
+[push]
+	default = simple
+[color]
+	ui = always
