@@ -33,6 +33,7 @@ nmap <F9> mz:execute TabToggle()<CR>'z
 execute pathogen#infect()
 
 " various settings
+syntax enable
 set dir=~/.vim/swap/
 set nofoldenable
 set ruler
