@@ -11,6 +11,9 @@ alias ls='ls --color=auto'
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# set vim as editor
+export EDITOR=vim
+
 # The next part changes the prompt based on the output
 # of some git commands. From http://gist.github.com/31934 
 
@@ -24,11 +27,11 @@ LIGHT_GREEN="\[\033[1;32m\]"
 WHITE="\[\033[1;37m\]"
 LIGHT_GRAY="\[\033[0;37m\]"
 COLOR_NONE="\[\e[0m\]"
- 
+
 function parse_git_branch {
 	git rev-parse --git-dir &> /dev/null
 	git_status="$(git status 2> /dev/null)"
-	branch_pattern="^# On branch ([^${IFS}]*)"
+	branch_pattern="^On branch ([^${IFS}]*)"
 	remote_pattern="# Your branch is (.*) of"
 	diverge_pattern="# Your branch and (.*) have diverged"
 
@@ -54,7 +57,7 @@ function parse_git_branch {
 		echo " (${branch})${remote}${state}"
 	fi
 }
- 
+
 function prompt_func() {
 	previous_return_value=$?;
 	prompt="${TITLEBAR}${LIGHT_BLUE}[${LIGHT_RED}\w${LIGHT_GREEN}$(parse_git_branch)${LIGHT_BLUE}]${COLOR_NONE} "
@@ -65,5 +68,5 @@ function prompt_func() {
 		PS1="${prompt}${LIGHT_RED}➔${COLOR_NONE} "
 	fi
 }
- 
+
 PROMPT_COMMAND=prompt_func
